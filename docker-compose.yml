@@ -52,7 +52,6 @@ services:
       - IOTA_MONGO_DB=iotagentjson
       - IOTA_PROVIDER_URL=http://iot-agent:4041
       - IOTA_DEFAULT_RESOURCE=/iot/json
-      - IOTA_HTTP_PORT=7896
       - IOTA_MQTT_HOST=mosquitto
       - IOTA_MQTT_PORT=1883
       - IOTA_MQTT_PROTOCOL=mqtt
@@ -64,7 +63,7 @@ services:
     hostname: mosquitto
     container_name: mosquitto
     ports: 
-        - "1883:1883"
+        - "8883:1883"
     networks:
         - fiware
     volumes:
@@ -96,7 +95,7 @@ services:
     volumes:
       - crate:/data
     environment: 
-      - TZ=Europe/Berlin
+      - TZ=Europe/Rome
       - CRATE_HEAP_SIZE=2g
 
   grafana:
@@ -107,7 +106,7 @@ services:
       - crate
     environment:
       - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-worldmap-panel,grafana-simple-json-datasource
-      - TZ=Europe/Berlin
+      - TZ=Europe/Rome
     volumes:
       - "grafana:/var/lib/grafana"
     ports:
