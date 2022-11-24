@@ -91,7 +91,7 @@ services:
     networks:
         - fiware
     ports:
-      - "4200:4200"
+      - "4243:4200"
     volumes:
       - crate:/data
     environment: 
